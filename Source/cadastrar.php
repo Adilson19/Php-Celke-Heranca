@@ -1,12 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <title>Celke</title>
 </head>
 <body>
+    <h1>Cadastrar contas a pagar</h1>
+    <a href="index.php">Listar</a>
     <?php
-
+        //  Incluindo o arquivo de conexao
+        require './Conn.php';
+        //  Incluindo o arquivo da classe ContasPagar
+        require './ContasPagar.php';
+        //  Recebendo os dados do formulário
+        $formDados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+        // var_dump($formDados);
+        // Verificando se o usuário clicou no botão
+        if(!empty($formDados['SendCadContaPg'] ?? null)){
+            //  Instanciando a classe ContasPagar
+            $cadContaPg = new ContasPagar();
+            //  Enviando os dados do formulário para o atributo da classe
+            $cadContaPg->formDados = $formDados;
+            //  Chamando o método cadastrar
+            $cadContaPg->cadastrar();
+        }
     ?>
     <form name="CadContaPg" action="" method="POST">
         <label>Nome:</label>
@@ -23,6 +40,5 @@
 
         <input type="submit" value="Cadastrar" name="SendCadContaPg">
     </form>
-
 </body>
 </html>
