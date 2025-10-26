@@ -1,5 +1,5 @@
 <?php
-class Conn{
+abstract class Conn{
     private static string $db = 'mysql';
     private static string $host = 'localhost';
     private static string $user = 'root';

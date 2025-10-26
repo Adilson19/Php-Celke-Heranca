@@ -17,6 +17,8 @@
         // var_dump($formDados);
         // Verificando se o usuário clicou no botão
         if(!empty($formDados['SendCadContaPg'] ?? null)){
+            //  Instanciando a classe de conexão - Nesse contexto nao pode ser instanciada. So pode ser instanciada por quem a herda
+            //$conn = new Conn();
             //  Instanciando a classe ContasPagar
             $cadContaPg = new ContasPagar();
             //  Enviando os dados do formulário para o atributo da classe
