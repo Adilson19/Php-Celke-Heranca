@@ -5,8 +5,8 @@
     <title>Celke</title>
 </head>
 <body>
-    <h1>Cadastrar contas a pagar</h1><br><br>
-    <a href="index.php">Listar</a>
+    <h1>Cadastrar contas a pagar</h1><br>
+    <a href="index.php">Listar</a><br><br>
     <?php
         //  Incluindo o arquivo de conexao
         require './Conn.php';

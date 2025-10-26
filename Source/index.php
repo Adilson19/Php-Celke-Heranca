@@ -6,7 +6,7 @@
     <title>Listar</title>
 </head>
 <body>
-    <h1>Listar contas a pagar</h1>
+    <h1>Listar contas a pagar</h1><br>
     <a href="cadastrar.php">Cadastrar</a><br><br>
     <?php 
         require './Conn.php';
