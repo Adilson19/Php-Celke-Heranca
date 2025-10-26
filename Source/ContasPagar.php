@@ -2,6 +2,7 @@
     class ContasPagar extends Conn
     {
         //  Atributos
+        public int $id;
         public array $formDados;
         public object $conn;
 
@@ -42,6 +43,19 @@
             $result_contas_pagars->execute();
             $retorno = $result_contas_pagars->fetchAll();
             //var_dump($retorno);
+            return $retorno;
+        }
+
+        public function visualizar(): array{
+            $this->conn = $this->connect();
+            $query_conta_pagar = "SELECT id, nome, valor, vencimento, obs
+            FROM contas_pagars
+            WHERE id =: id
+            LIMIT 1";
+            $result_contas_pagar = $this->conn->prepare(query_conta_pagar);
+            $result_contas_pagar->bindParam(':id', $this->id, PDO::PARAM_INT);
+            $result_contas_pagar->execute();
+            $retorno = $result_contas_pagar->fetch();
             return $retorno;
         }
     }
