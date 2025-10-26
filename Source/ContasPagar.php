@@ -7,7 +7,7 @@
 
         //  Metodos 
         public function cadastrar(): bool{
-            var_dump($this->formDados);
+            //var_dump($this->formDados);
             //  Conectando com o banco de dados
             $this->conn = $this->connect();
             $query_conta_pagar = "INSERT INTO contas_pagars 
@@ -29,6 +29,20 @@
             }else{
                 return false;
             }
+        }
+
+        public function listar(): array{
+            //  Conectando com o banco de dados
+            $this->conn = $this->connect();
+            $query_conta_pagars = "SELECT id, nome, valor, vencimento, obs 
+                FROM contas_pagars 
+                ORDER BY id DESC
+                LIMIT 40";
+            $result_contas_pagars = $this->conn->prepare($query_conta_pagars);
+            $result_contas_pagars->execute();
+            $retorno = $result_contas_pagars->fetchAll();
+            //var_dump($retorno);
+            return $retorno;
         }
     }
 ?>

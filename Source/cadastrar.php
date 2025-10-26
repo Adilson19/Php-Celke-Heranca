@@ -5,7 +5,7 @@
     <title>Celke</title>
 </head>
 <body>
-    <h1>Cadastrar contas a pagar</h1>
+    <h1>Cadastrar contas a pagar</h1><br><br>
     <a href="index.php">Listar</a>
     <?php
         //  Incluindo o arquivo de conexao
@@ -26,9 +26,9 @@
             //  Chamando o método cadastrar
             $valor = $cadContaPg->cadastrar();
             if($valor){
-                echo "Conta a pagar cadastrada com sucesso!";
+                echo "<p style='color: #00ff00;'>Conta a pagar cadastrada com sucesso!</p>";
             }else{
-                echo "Erro: conta a agar não cadastrada com sucesso!";
+                echo "<p style='color: #ff0000;'>Erro: conta a agar não cadastrada com sucesso!</p>";
             }
         }
     ?>
