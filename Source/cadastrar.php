@@ -22,7 +22,12 @@
             //  Enviando os dados do formulário para o atributo da classe
             $cadContaPg->formDados = $formDados;
             //  Chamando o método cadastrar
-            $cadContaPg->cadastrar();
+            $valor = $cadContaPg->cadastrar();
+            if($valor){
+                echo "Conta a pagar cadastrada com sucesso!";
+            }else{
+                echo "Erro: conta a agar não cadastrada com sucesso!";
+            }
         }
     ?>
     <form name="CadContaPg" action="" method="POST">
