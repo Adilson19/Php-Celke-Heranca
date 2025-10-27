@@ -22,7 +22,8 @@
             echo "Valor: ". number_format($valor, 2, ",", ".") ." KZ<br>";
             echo "Vencimento: ". date('d/M/Y', strtotime($vencimento)) ." <br>";
             echo "Observação: ". $obs ." <br>";
-            echo "<a href='visualizar.php?id=" . $id . "'>Visualização</a>";
+            echo "<a href='visualizar.php?id=" . $id . "'>Visualização</a><br>";
+            echo "<a href='editar.php?id=" . $id . "'>Editar</a><br>";
             echo "<hr>";
         }
     ?>

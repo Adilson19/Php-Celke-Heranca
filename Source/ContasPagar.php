@@ -58,5 +58,27 @@
             $retorno = $result_contas_pagar->fetch(PDO::FETCH_ASSOC);
             return $retorno;
         }
+
+        public function editar(): bool{
+            $this->conn = $this->connect();
+            var_dump($this->formDados);
+
+            $query_conta_pagar = "UPDATE contas_pagars 
+                    SET nome=:nome, valor=:valor, vencimento=:vencimento, obs=:obs, modified=NOW()
+                    WHERE id=:id";
+            $edit_conta_pagar = $this->conn->prepare($query_conta_pagar);
+            $edit_conta_pagar->bindParam(':nome', $this->formDados['nome'], PDO::PARAM_STR);
+            $edit_conta_pagar->bindParam(':valor', $this->formDados['valor'], PDO::PARAM_STR);
+            $edit_conta_pagar->bindParam(':vencimento', $this->formDados['vencimento'], PDO::PARAM_STR);
+            $edit_conta_pagar->bindParam(':obs', $this->formDados['obs'], PDO::PARAM_STR);
+            $edit_conta_pagar->bindParam(':id', $this->formDados['id'], PDO::PARAM_INT);
+
+            $edit_conta_pagar->execute();
+            if($edit_conta_pagar->rowCount()){
+                return true;
+            }else{
+                return false;
+            }
+        }
     }
 ?>
