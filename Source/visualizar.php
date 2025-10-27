@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Visualizar conta a pagar</h1><br>
-    <a href="listar.php">Listar</a><br><br>
+    <a href="index.php">Listar</a><br><br>
 
     <?php
         $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT); 
@@ -30,7 +30,16 @@
             //  Instanciar o metodo visualizar
             $result_vis_conta_pg = $visContaPg->visualizar();
 
-            var_dump($result_vis_conta_pg);
+            //var_dump($result_vis_conta_pg);
+            //  Imprimir os registro do BD
+            //  Comando Extract serve para extrair um array        
+            extract($result_vis_conta_pg);
+            echo "ID: " . $id .  "<br>";
+            echo "Nome: " . $nome .  "<br>";
+            echo "Valor: " . number_format($valor, 2, ",", ".") . "<br>";
+            echo "Vencimento: " . date('d/m/Y', strtotime($vencimento)) .  "<br>";
+            echo "Observação: " . $obs .  "<br>";
+
         }else{
             echo "<p style='color: #ff0000'>Erro: conta a pagar não encontrada</p>";
         }
