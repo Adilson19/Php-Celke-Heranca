@@ -10,8 +10,6 @@
     <a href="listar.php">Listar</a><br><br>
 
     <?php
-        require './Conn.php';
-        require './ContasPagar.php';
         $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT); 
 
         //  Verificar se o ID possui valor 
