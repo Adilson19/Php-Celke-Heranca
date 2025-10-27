@@ -12,11 +12,11 @@
     <?php
         require './Conn.php';
         require './ContasPagar.php';
-        $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
+        $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT); 
 
-        //  Verificar se o ID possui valor
+        //  Verificar se o ID possui valor 
         if(!empty($id)){
-            //  
+            //  Buscando os outros ficheiros distribuidos pelo projeto 
             require './Conn.php';
             require './ContasPagar.php';
 

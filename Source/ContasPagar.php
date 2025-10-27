@@ -50,12 +50,12 @@
             $this->conn = $this->connect();
             $query_conta_pagar = "SELECT id, nome, valor, vencimento, obs
             FROM contas_pagars
-            WHERE id =: id
+            WHERE id = :id
             LIMIT 1";
-            $result_contas_pagar = $this->conn->prepare(query_conta_pagar);
+            $result_contas_pagar = $this->conn->prepare($query_conta_pagar);
             $result_contas_pagar->bindParam(':id', $this->id, PDO::PARAM_INT);
             $result_contas_pagar->execute();
-            $retorno = $result_contas_pagar->fetch();
+            $retorno = $result_contas_pagar->fetch(PDO::FETCH_ASSOC);
             return $retorno;
         }
     }
