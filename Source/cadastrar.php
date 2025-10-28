@@ -7,11 +7,12 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="assets/css/style.css">
     <title>Celke</title>
 </head>
 <body>
-    <h1>Cadastrar contas a pagar</h1><br>
-    <a href="index.php">Listar</a><br><br>
+    <h1>Cadastrar contas a pagar</h1><br><br>
+    <a class="titulo" href="index.php">Listar</a><br><br><br>
     <?php
         //  Incluindo o arquivo de conexao
         require './Conn.php';
@@ -39,7 +40,7 @@
             }
         }
     ?>
-    <form name="CadContaPg" action="" method="POST">
+    <form class="formulario" name="CadContaPg" action="" method="POST">
         <label>Nome:</label>
         <input type="text" name="nome" placeholder="Nome da Conta a pagar" required><br><br>
 
@@ -52,7 +53,7 @@
         <label>Observação:</label>
         <textarea name="obs" placeholder="Observação da Conta a pagar"></textarea><br><br>
 
-        <input type="submit" value="Cadastrar" name="SendCadContaPg">
+        <input class="submit" type="submit" value="Cadastrar" name="SendCadContaPg">
     </form>
 </body>
 </html>

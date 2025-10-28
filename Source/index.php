@@ -13,8 +13,8 @@
     <title>Celke</title>
 </head>
 <body>
-    <h1>Listar contas a pagar</h1><br>
-    <a href="cadastrar.php">Cadastrar</a><br><br>
+    <h1>Listar contas a pagar</h1><br><br>
+    <a href="cadastrar.php">Cadastrar</a><br><br><br>
     <?php 
         if(isset($_SESSION['msg'])){
             echo($_SESSION['msg']);

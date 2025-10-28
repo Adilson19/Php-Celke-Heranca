@@ -11,8 +11,8 @@
     <title>Celke</title>
 </head>
 <body>
-    <h1>Editar conta a pagar</h1><br>
-    <a href="index.php">Listar</a><br><br>
+    <h1>Editar conta a pagar</h1><br><br>
+    <a href="index.php">Listar</a><br><br><br>
     <?php   
         //  Receber o ID da URL
         $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
