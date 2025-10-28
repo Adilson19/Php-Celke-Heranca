@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    ob_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -41,7 +46,8 @@
             echo "Observação: " . $obs .  "<br>";
 
         }else{
-            echo "<p style='color: #ff0000'>Erro: conta a pagar não encontrada</p>";
+            $_SESSION['msg'] = "<p style='color: #ff0000'>Erro: conta a pagar não encontrada</p>";    
+            header("Location: index.php");
         }
 
     ?>    
