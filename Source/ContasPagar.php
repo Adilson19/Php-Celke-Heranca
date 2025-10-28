@@ -85,5 +85,15 @@
             $edit_conta_pagar->execute();
             return $edit_conta_pagar->rowCount() > 0;
         }
+        //  Metodo apagar
+        public function apagar():bool{
+            $this->conn = $this->connect();
+
+            $query_conta_pg = "DELETE FROM contas_pagars WHERE id=:id";
+            $apagar_conta_pg = $this->conn->prepare($query_conta_pg);
+            $apagar_conta_pg->bindParam(':id', $this->id, PDO::PARAM_INT);
+            $retorno = $apagar_conta_pg->execute();
+            return $retorno;
+        }
     }
 ?>

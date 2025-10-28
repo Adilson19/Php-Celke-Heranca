@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    ob_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -33,9 +38,11 @@
                 //  Instanciando o metodo editar
                 $valor = $editContaPg->editar();
                 if($valor){
-                    echo "<p style='color: #00ff00'>Conta a pagar editada com sucesso</p>";
+                    $_SESSION['msg'] = "<p style='color: #00ff00;'>Conta a pagar Editada com sucesso!</p>";
+                    header("Location: index.php");
                 }else{
-                    echo "<p style='color: #ff0000'>Erro: Conta a pagar não Editada</p>";
+                    $_SESSION['msg'] = "<p style='color: #ff0000'>Erro: Conta a pagar não Editada</p>";
+                    header("Location: index.php");
                 }
             }
             // SendEditContaPg
@@ -65,7 +72,8 @@
 
         <?php
         }else{
-            "<p style='color: #ff0000'>Erro: Conta a pagar não encontrada</p>";
+            $_SESSION['msg'] = "<p style='color: #ff0000'>Erro: conta a pagar não encontrada</p>";    
+            header("Location: index.php");
         }
     ?>
     

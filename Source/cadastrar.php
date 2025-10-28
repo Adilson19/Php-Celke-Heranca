@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    ob_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -26,9 +31,11 @@
             //  Chamando o método cadastrar
             $valor = $cadContaPg->cadastrar();
             if($valor){
-                echo "<p style='color: #00ff00;'>Conta a pagar cadastrada com sucesso!</p>";
+                $_SESSION['msg'] = "<p style='color: #00ff00;'>Conta a pagar Cadastrada com sucesso!</p>";
+                header("Location: index.php");
             }else{
-                echo "<p style='color: #ff0000;'>Erro: conta a agar não cadastrada com sucesso!</p>";
+                $_SESSION['msg'] = "<p style='color: #ff0000'>Erro: conta a pagar não Cadastrada</p>";    
+                header("Location: index.php");
             }
         }
     ?>

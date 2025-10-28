@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    ob_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -9,6 +15,10 @@
     <h1>Listar contas a pagar</h1><br>
     <a href="cadastrar.php">Cadastrar</a><br><br>
     <?php 
+        if(isset($_SESSION['msg'])){
+            echo($_SESSION['msg']);
+            unset($_SESSION['msg']);
+        }
         require './Conn.php';
         require './ContasPagar.php';
 
@@ -24,6 +34,7 @@
             echo "Observação: ". $obs ." <br>";
             echo "<a href='visualizar.php?id=" . $id . "'>Visualização</a><br>";
             echo "<a href='editar.php?id=" . $id . "'>Editar</a><br>";
+            echo "<a href='apagar.php?id=" . $id . "'>Apagar</a><br>";
             echo "<hr>";
         }
     ?>
