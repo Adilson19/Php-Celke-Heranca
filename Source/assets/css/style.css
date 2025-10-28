@@ -44,6 +44,7 @@ h1{
     align-items: center;
     padding: 30px;
     background-color: dimgrey;
+    border-radius: 20px;
 }
 .formulario input::placeholder{
     color: aqua;

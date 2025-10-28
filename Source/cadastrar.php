@@ -11,7 +11,7 @@
     <title>Celke</title>
 </head>
 <body>
-    <h1>Cadastrar contas a pagar</h1><br><br>
+    <h1>Cadastrar Contas a Pagar</h1><br><br>
     <a class="titulo" href="index.php">Listar</a><br><br><br>
     <?php
         //  Incluindo o arquivo de conexao

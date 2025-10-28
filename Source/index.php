@@ -13,8 +13,8 @@
     <title>Celke</title>
 </head>
 <body>
-    <h1>Listar contas a pagar</h1><br><br>
-    <a href="cadastrar.php">Cadastrar</a><br><br><br>
+    <h1>Listar Contas a Pagar</h1><br><br>
+    <a class="titulo" href="cadastrar.php">Cadastrar</a><br><br><br>
     <?php 
         if(isset($_SESSION['msg'])){
             echo($_SESSION['msg']);
@@ -28,15 +28,21 @@
         //var_dump($list_contas_pgs);
         foreach($list_contas_pgs as $row_conta_pg){
             extract($row_conta_pg);
-            echo "ID: ". $id ." <br>";
-            echo "Nome: ". $nome ."<br>";
-            echo "Valor: ". number_format($valor, 2, ",", ".") ." KZ<br>";
-            echo "Vencimento: ". date('d/M/Y', strtotime($vencimento)) ." <br>";
-            echo "Observação: ". $obs ." <br>";
-            echo "<a href='visualizar.php?id=" . $id . "'>Visualização</a><br>";
+            echo "<label>ID: </label>". $id ." <br>";
+            echo "<label>Nome: </label>". $nome ."<br>";
+            echo "<label>Valor: </label>". number_format($valor, 2, ",", ".") ." KZ<br>";
+            echo "<label>Vencimento: </label>". date('d/M/Y', strtotime($vencimento)) ." <br>";
+            echo "<label>Observação: </label>". $obs ." <br>";
+            echo "<a 
+                    style='
+                            color: black; 
+                            text-decoration:none';
+
+                    ;            
+            href='visualizar.php?id=" . $id . "'>Visualização</a><br>";
             echo "<a href='editar.php?id=" . $id . "'>Editar</a><br>";
             echo "<a href='apagar.php?id=" . $id . "'>Apagar</a><br>";
-            echo "<hr>";
+            echo "<hr style='color: blue'>";
         }
     ?>
 </body>
