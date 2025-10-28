@@ -61,24 +61,29 @@
 
         public function editar(): bool{
             $this->conn = $this->connect();
-            var_dump($this->formDados);
+            // normalize and set defaults to avoid NULL constraint errors
+            $id = $this->formDados['id'] ?? null;
+            $nome = trim($this->formDados['nome'] ?? '');
+            $valor = $this->formDados['valor'] ?? '';
+            $vencimento = $this->formDados['vencimento'] ?? null;
+            $obs = $this->formDados['obs'] ?? ''; // default empty string
+
+            if (empty($id)) {
+                return false;
+            }
 
             $query_conta_pagar = "UPDATE contas_pagars 
                     SET nome=:nome, valor=:valor, vencimento=:vencimento, obs=:obs, modified=NOW()
                     WHERE id=:id";
             $edit_conta_pagar = $this->conn->prepare($query_conta_pagar);
-            $edit_conta_pagar->bindParam(':nome', $this->formDados['nome'], PDO::PARAM_STR);
-            $edit_conta_pagar->bindParam(':valor', $this->formDados['valor'], PDO::PARAM_STR);
-            $edit_conta_pagar->bindParam(':vencimento', $this->formDados['vencimento'], PDO::PARAM_STR);
-            $edit_conta_pagar->bindParam(':obs', $this->formDados['obs'], PDO::PARAM_STR);
-            $edit_conta_pagar->bindParam(':id', $this->formDados['id'], PDO::PARAM_INT);
+            $edit_conta_pagar->bindValue(':nome', $nome, PDO::PARAM_STR);
+            $edit_conta_pagar->bindValue(':valor', $valor, PDO::PARAM_STR);
+            $edit_conta_pagar->bindValue(':vencimento', $vencimento, PDO::PARAM_STR);
+            $edit_conta_pagar->bindValue(':obs', $obs, PDO::PARAM_STR);
+            $edit_conta_pagar->bindValue(':id', (int) $id, PDO::PARAM_INT);
 
             $edit_conta_pagar->execute();
-            if($edit_conta_pagar->rowCount()){
-                return true;
-            }else{
-                return false;
-            }
+            return $edit_conta_pagar->rowCount() > 0;
         }
     }
 ?>
