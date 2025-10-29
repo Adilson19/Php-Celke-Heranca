@@ -73,7 +73,7 @@
 
         <?php
         }else{
-            $_SESSION['msg'] = "<p style='color: #ff0000'>Erro: conta a pagar não encontrada</p>";    
+            $_SESSION['msg'] = "<p style='color: #ff0000; border: 1px solid #f00'>Erro: conta a pagar não encontrada</p>";    
             header("Location: index.php");
         }
     ?>
